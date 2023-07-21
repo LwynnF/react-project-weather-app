@@ -5,7 +5,7 @@ import WeatherTemperature from "./WeatherTemperature";
 import DisplayLocalTime from "./DisplayLocalTime";
 
 export default function WeatherInfo(props) {
-	const { weatherData } = props;
+	const { city, weatherData } = props;
 
 	return (
 		<div className="WeatherInfo">

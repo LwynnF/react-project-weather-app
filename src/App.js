@@ -10,7 +10,6 @@ import "./App.css";
 export default function App() {
 	const [city, setCity] = useState("Edinburgh");
 	const [backgroundImage, setBackgroundImage] = useState(null);
-	const [weatherData, setWeatherData] = useState(null);
 
 	function handleCityChange(newCity) {
 		setCity(newCity);
@@ -31,11 +30,8 @@ export default function App() {
 				city={city}
 				setBackgroundImage={setBackgroundImage}
 			/>
-			<Search
-				onCityChange={handleCityChange}
-				setWeatherData={setWeatherData}
-			/>
-		<WeatherInfo />
+			<Search onCityChange={handleCityChange} />
+			<WeatherInfo />
 			<WeatherForecast />
 			<Footer />
 		</div>

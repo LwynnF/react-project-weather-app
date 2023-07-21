@@ -20,7 +20,7 @@ export default function WeatherForecast(props) {
 	}
 
 	// function makes a search using the searched city coordins and then handleResponse function called to generate forecast
-	function load() {
+	function load(props) {
 		let apiKey = "4c9b53e4f8f5eb00df5915bdca340605";
 		let units = "metric";
 		if (!props || !props.coordinates) {
@@ -28,12 +28,8 @@ export default function WeatherForecast(props) {
 			return;
 		}
 
-		if (!props.coordinates) {
-			console.log("props.coordinates is undefined");
-			return;
-		}
-
-		let { lon: longitude, lat: latitude } = props.coordinates;
+		let longitude = props.coordinates.lon;
+		let latitude = props.coordinates.lat;
 
 		if (longitude === undefined || latitude === undefined) {
 			console.log(
@@ -48,12 +44,6 @@ export default function WeatherForecast(props) {
 	}
 
 	// Checks whether loaded state variable is true, when loaded is false load function is called to make the API call
-	useEffect(() => {
-		if (!loaded) {
-			load();
-		}
-	}, [loaded]);
-
 	if (loaded) {
 		return (
 			<div className="WeatherForecast">
@@ -76,6 +66,8 @@ export default function WeatherForecast(props) {
 			</div>
 		);
 	} else {
+		load();
+
 		return null;
 	}
 }
