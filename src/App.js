@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import BackgroundImage from "../src/components/BackgroundImage";
+import Search from "../src/components/Search";
+import WeatherInfo from "../src/components/WeatherInfo";
+import WeatherForecast from "../src/components/WeatherForecast";
+import Footer from "../src/components/Footer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css";
+
+export default function App() {
+	const [city, setCity] = useState("Edinburgh");
+	const [backgroundImage, setBackgroundImage] = useState(null);
+	const [weatherData, setWeatherData] = useState(null);
+
+	function handleCityChange(newCity) {
+		setCity(newCity);
+	}
+
+	return (
+		<div
+			className="App"
+			style={{
+				backgroundImage: `url(${backgroundImage})`,
+				backgroundSize: "cover",
+				backgroundPosition: "center",
+				height: "100vh",
+			}}
+		>
+			<BackgroundImage
+				className="backgroundImage"
+				city={city}
+				setBackgroundImage={setBackgroundImage}
+			/>
+			<Search
+				onCityChange={handleCityChange}
+				setWeatherData={setWeatherData}
+			/>
+		<WeatherInfo />
+			<WeatherForecast />
+			<Footer />
+		</div>
+	);
 }
-
-export default App;
