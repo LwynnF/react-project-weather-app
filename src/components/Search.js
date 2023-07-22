@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
-export default function Weather({ onCityChange }) {
+export default function Search({ onCityChange }) {
 	const [weatherData, setWeatherData] = useState({ ready: false });
 	const [city, setCity] = useState("Edinburgh");
 
@@ -56,6 +58,8 @@ export default function Weather({ onCityChange }) {
 						</div>
 					</div>
 				</form>
+				<WeatherInfo weatherData={weatherData} />
+				<WeatherForecast coordinates={weatherData.coordinates} />
 			</div>
 		);
 	}
