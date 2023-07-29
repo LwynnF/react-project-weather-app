@@ -3,6 +3,7 @@ import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
 import DisplayLocalTime from "./DisplayLocalTime";
+import "./WeatherInfo.css";
 
 export default function WeatherInfo(props) {
 	const { data } = props;
@@ -20,23 +21,21 @@ export default function WeatherInfo(props) {
 				<li className="text-capitalize">{data.description}</li>
 			</ul>
 			<div className="row mt-3">
-				<div className="col-6">
-					<div className="clearfix d-flex">
-						<div className="float-left">
-							<WeatherIcon
-								code={data.icon}
-								size={52}
-							/>
-						</div>
-						<div className="float-left">
-							<WeatherTemperature celsius={data.temperature} />
-						</div>
+				<div className="icon-temp clearfix d-flex">
+					<div className="float-left">
+						<WeatherIcon
+							code={data.icon}
+							size={100}
+						/>
+					</div>
+					<div className="float-left">
+						<WeatherTemperature celsius={data.temperature} />
 					</div>
 				</div>
-				<div className="col-6">
-					<ul>
+				<div>
+					<ul className="Stats">
 						<li>Humidity: {data.humidity}%</li>
-						<li>Wind: {Math.round(data.wind)} mph</li>
+						<li>Wind: {Math.round(data.wind)}mph</li>
 					</ul>
 				</div>
 			</div>

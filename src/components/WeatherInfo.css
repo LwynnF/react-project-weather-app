@@ -1,0 +1,36 @@
+.WeatherInfo h1 {
+	font-size: 65px;
+	margin: 20px;
+}
+
+.WeatherInfo ul,
+li {
+	list-style-type: none;
+	font-size: 18px;
+}
+
+.WeatherInfo col-6 {
+	align-items: center;
+}
+
+.WeatherInfo p {
+	font-size: 18px;
+}
+
+.WeatherInfo .icon-temp {
+  justify-content: center;
+}
+
+.WeatherInfo .Stats {
+ 
+	float: left;
+	font-size: 16px;
+  align-items: center;
+}
+
+.WeatherInfo .Stats li {
+	font-size: 16px;
+	float: left;
+	margin: 10px;
+ justify-content: center;
+}

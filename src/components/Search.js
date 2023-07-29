@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
+import "./Search.css";
 
 export default function Search({ onCityChange }) {
 	const [weatherData, setWeatherData] = useState({ ready: false });
@@ -36,29 +37,28 @@ export default function Search({ onCityChange }) {
 
 	if (weatherData.ready) {
 		return (
-			<div className="Weather">
+			<div className="Search">
 				<form onSubmit={handleSubmit}>
 					<div className="row">
-						<div className="col-8">
+						<div className="col-6">
 							<input
 								type="search"
-								placeholder="Enter a city..."
 								className="form-control"
-								autoFocus="on"
+								autoFocus="off"
 								onChange={(event) => setCity(event.target.value)}
 							/>
 						</div>
 
-						<div className="col-3">
+						<div className="col-4">
 							<input
 								type="submit"
 								value="Search"
-								className="btn btn-primary w-100"
+								className="btn btn-light w-100"
 							/>
 						</div>
 					</div>
 				</form>
-				<WeatherInfo weatherData={weatherData} />
+				<WeatherInfo data={weatherData} />
 				<WeatherForecast coordinates={weatherData.coordinates} />
 			</div>
 		);

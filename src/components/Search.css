@@ -1,0 +1,20 @@
+.Search {
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.Search input {
+	box-shadow: 0 3px 10px #7b7b7b;
+}
+
+.Search .btn-light {
+	background-color: rgb(255, 255, 255, 0.65);
+	color: #7b7b7b;
+	box-shadow: 0 3px 10px #7b7b7b;
+}
+
+.Search .btn:hover {
+	background-color: #fff;
+}
