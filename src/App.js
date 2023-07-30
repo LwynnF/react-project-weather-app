@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BackgroundImage from "../src/components/BackgroundImage";
-import Overlay from "../src/components/Overlay";
+import Overlay from "../src/components/Overlay"
 import Search from "../src/components/Search";
 import Footer from "../src/components/Footer";
 
@@ -32,8 +32,11 @@ export default function App() {
 				city={city}
 				setBackgroundImage={setBackgroundImage}
 			/>
-			<Search onCityChange={handleCityChange} />
-			<Footer />
+			<Search
+				style={{ zIndex: 1 }}
+				onCityChange={handleCityChange}
+			/>
+			<Footer style={{ zIndex: 1 }} />
 		</div>
 	);
 }

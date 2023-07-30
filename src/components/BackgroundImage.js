@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 import axios from "axios";
 
 // If city is updated then make unsplash api call to get image
