@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
@@ -8,7 +8,7 @@ export default function Search({ onCityChange }) {
 	const [weatherData, setWeatherData] = useState({ ready: false });
 	const [city, setCity] = useState("Edinburgh");
 
-	function handleResponse(response) {
+	const handleResponse = useCallback((response) => {
 		setWeatherData({
 			ready: true,
 			coordinates: response.data.coord,
@@ -21,19 +21,22 @@ export default function Search({ onCityChange }) {
 			icon: response.data.weather[0].icon,
 			timezoneOffset: response.data.timezone,
 		});
-	}
+	}, []);
 
-	function handleSubmit(event) {
-		event.preventDefault();
-		onCityChange(city);
-		const apiKey = "4c9b53e4f8f5eb00df5915bdca340605";
-		let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-		axios.get(apiUrl).then(handleResponse);
-	}
+	const handleSubmit = useCallback(
+		(event) => {
+			event.preventDefault();
+			onCityChange(city);
+			const apiKey = "4c9b53e4f8f5eb00df5915bdca340605";
+			let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+			axios.get(apiUrl).then(handleResponse);
+		},
+		[city, handleResponse, onCityChange]
+	);
 
 	useEffect(() => {
 		handleSubmit({ preventDefault: () => {} });
-	}, []); // Call API on initial render
+	}, [handleSubmit]); // Call API on initial render
 
 	if (weatherData.ready) {
 		return (
