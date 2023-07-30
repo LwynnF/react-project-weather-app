@@ -1,3 +1,5 @@
+
+
 .WeatherInfo h1 {
 	font-size: 65px;
 	margin: 20px;
@@ -18,19 +20,29 @@ li {
 }
 
 .WeatherInfo .icon-temp {
-  justify-content: center;
+	justify-content: center;
 }
 
 .WeatherInfo .Stats {
- 
-	float: left;
 	font-size: 16px;
-  align-items: center;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	font-weight: 800;
 }
 
 .WeatherInfo .Stats li {
 	font-size: 16px;
-	float: left;
 	margin: 10px;
- justify-content: center;
+}
+
+.WeatherInfo .date-time-container {
+	display: flex;
+	align-items: center;
+	font-weight: 600;
+	margin: 5px;
+}
+
+.WeatherInfo ul {
+	padding-left: 0;
 }

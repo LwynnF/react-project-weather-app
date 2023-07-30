@@ -1,0 +1,24 @@
+.coded-by {
+	font-size: 14px;
+}
+
+.coded-by a {
+	color: #fff;
+}
+
+.social-links a {
+	margin: 20px 20px;
+	color: #fff;
+	background: rgb(130, 143, 148);
+	padding: 5px 10px;
+	font-size: 18px;
+	border-radius: 50%;
+	transition: all 100ms ease-in-out;
+  box-shadow: 2px 3px 2px rgb(98, 107, 110);
+}
+
+.social-links a:hover {
+	color: rgb(130, 143, 148);
+	background: #fff;
+  box-shadow: 2px 2px 2px rgb(246, 246, 246);
+}

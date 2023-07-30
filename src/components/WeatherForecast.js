@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherForecastDay from "./WeatherForecastDay";
 
+import "./WeatherForecast.css"
+
 // By default set false and null as need to retrieve info using API
 export default function WeatherForecast(props) {
 	let [loaded, setLoaded] = useState(false);
@@ -33,13 +35,13 @@ export default function WeatherForecast(props) {
 	// Checks whether loaded state variable is true, when loaded is false load function is called to make the API call
 	if (loaded) {
 		return (
-			<div className="WeatherForecast">
+			<div className="WeatherForecast ">
 				<div className="row">
 					{forecast.map(function (dailyForecast, index) {
 						if (index < 5) {
 							return (
 								<div
-									className="col"
+									className="col day"
 									key={index}
 								>
 									<WeatherForecastDay data={dailyForecast} />

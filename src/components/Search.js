@@ -40,11 +40,12 @@ export default function Search({ onCityChange }) {
 			<div className="Search">
 				<form onSubmit={handleSubmit}>
 					<div className="row">
-						<div className="col-6">
+						<div className="col-8">
 							<input
 								type="search"
 								className="form-control"
 								autoFocus="off"
+								placeholder="Enter a city"
 								onChange={(event) => setCity(event.target.value)}
 							/>
 						</div>

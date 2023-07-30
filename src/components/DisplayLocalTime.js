@@ -10,5 +10,5 @@ export default function DisplayLocalTime({ weatherData }) {
 		.utc()
 		.format("HH:mm");
 
-	return <p>Local Time: {localTime}</p>;
+	return <li className="date-time-container">Local Time: {localTime}</li>;
 }

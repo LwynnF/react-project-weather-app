@@ -11,14 +11,15 @@ export default function WeatherInfo(props) {
 	return (
 		<div className="WeatherInfo">
 			<h1>{data.city}</h1>
-			<ul>
-				<li>
+			<ul style={{ display: "flex", justifyContent: "space-between" }}>
+				<li className="date-time-container">
 					<FormattedDate date={data.date} />
-					{data && data.date && data.timezoneOffset && (
-						<DisplayLocalTime weatherData={data} />
-					)}
 				</li>
-				<li className="text-capitalize">{data.description}</li>
+				{data && data.date && data.timezoneOffset && (
+					<li className="date-time-container">
+						<DisplayLocalTime weatherData={data} />
+					</li>
+				)}
 			</ul>
 			<div className="row mt-3">
 				<div className="icon-temp clearfix d-flex">
@@ -28,7 +29,7 @@ export default function WeatherInfo(props) {
 							size={100}
 						/>
 					</div>
-					<div className="float-left">
+					<div>
 						<WeatherTemperature celsius={data.temperature} />
 					</div>
 				</div>
