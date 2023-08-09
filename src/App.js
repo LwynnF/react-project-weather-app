@@ -1,8 +1,9 @@
+
 import React, { useState } from "react";
 import BackgroundImage from "../src/components/BackgroundImage";
-import Overlay from "../src/components/Overlay"
 import Search from "../src/components/Search";
 import Footer from "../src/components/Footer";
+import Overlay from "../src/components/Overlay"
 
 import "./App.css";
 
@@ -24,7 +25,8 @@ export default function App() {
 				height: "100vh",
 			}}
 		>
-			{/* Render the Overlay component */}
+
+						{/* Render the Overlay component */}
 			{backgroundImage && <Overlay />}
 
 			<BackgroundImage
@@ -32,11 +34,8 @@ export default function App() {
 				city={city}
 				setBackgroundImage={setBackgroundImage}
 			/>
-			<Search
-				style={{ zIndex: 1 }}
-				onCityChange={handleCityChange}
-			/>
-			<Footer style={{ zIndex: 1 }} />
+			<Search onCityChange={handleCityChange} />
+			<Footer />
 		</div>
 	);
 }
