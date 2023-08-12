@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
@@ -8,10 +8,24 @@ export default function Search({ onCityChange }) {
 	const [weatherData, setWeatherData] = useState({ ready: false });
 	const [city, setCity] = useState("Edinburgh");
 
+	const search = useCallback((city) => {
+		const apiKey = "4c9b53e4f8f5eb00df5915bdca340605";
+		let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+		axios
+			.get(apiUrl)
+			.then((response) => {
+				handleResponse(response);
+			})
+			.catch((error) => {
+				console.error("API Error:", error);
+			});
+	}, []);
+
 	useEffect(() => {
 		// Fetch weather data for the default city when the component mounts
 		search(city);
-	}, [city]);
+	}, [search, city]);
 
 	function handleResponse(response) {
 		setWeatherData({
@@ -40,20 +54,6 @@ export default function Search({ onCityChange }) {
 		setCity(event.target.value);
 	}
 
-	function search(city) {
-		const apiKey = "4c9b53e4f8f5eb00df5915bdca340605";
-		let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-		axios
-			.get(apiUrl)
-			.then((response) => {
-				handleResponse(response);
-			})
-			.catch((error) => {
-				console.error("API Error:", error);
-			});
-	}
-
 	return (
 		<div className="Search">
 			<form onSubmit={handleSubmit}>
@@ -64,6 +64,7 @@ export default function Search({ onCityChange }) {
 							className="form-control"
 							autoFocus={false}
 							placeholder="Enter a city"
+		
 							onChange={handleCityChange}
 						/>
 					</div>
