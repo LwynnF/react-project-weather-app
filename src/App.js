@@ -33,7 +33,7 @@ export default function App() {
 				city={city}
 				setBackgroundImage={setBackgroundImage}
 			/>
-			<Search onCityChange={handleCityChange} />
+			<Search defaultCity="Edinburgh" onCityChange={handleCityChange} />
 			<Footer />
 		</div>
 	);

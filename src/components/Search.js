@@ -4,9 +4,9 @@ import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import "./Search.css";
 
-export default function Weather({ onCityChange }) {
+export default function Search({ defaultCity, onCityChange }) {
 	const [weatherData, setWeatherData] = useState({ ready: false });
-	const [city, setCity] = useState("Edinburgh");
+	const [city, setCity] = useState(defaultCity);
 
 	function handleResponse(response) {
 		setWeatherData({
@@ -31,7 +31,12 @@ export default function Weather({ onCityChange }) {
 		axios.get(apiUrl).then(handleResponse);
 	}
 
-	useEffect(() => {}, []); // Call API on initial render
+	// Cals API on initial render with defaultCity
+	useEffect(() => {
+		const apiKey = "4c9b53e4f8f5eb00df5915bdca340605";
+		let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}&units=metric`;
+		axios.get(apiUrl).then(handleResponse);
+	}, [defaultCity]);
 
 	function handleCityChange(event) {
 		setCity(event.target.value);
